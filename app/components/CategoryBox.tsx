@@ -52,7 +52,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
       className={`
         flex 
         flex-col 
-        items-center 
+        items-center
         justify-center 
         gap-2
         p-3
