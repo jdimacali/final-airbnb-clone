@@ -11,32 +11,27 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json();
-  const {
-    title,
-    description,
-    imageSrc,
-    category,
-    roomCount,
-    bathroomCount,
-    guestCount,
-    location,
-    price,
-  } = body;
+  const { listingId, startDate, endDate, totalPrice } = body;
 
-  const listing = await prisma.listing.create({
+  if (!listingId || !startDate || !endDate || !totalPrice) {
+    return NextResponse.error();
+  }
+
+  const listingAndReservation = await prisma.listing.update({
+    where: {
+      id: listingId,
+    },
     data: {
-      title,
-      description,
-      imageSrc,
-      category,
-      roomCount,
-      bathroomCount,
-      guestCount,
-      locationValue: location.value,
-      price: parseInt(price, 10),
-      userId: currentUser.id,
+      reservations: {
+        create: {
+          userId: currentUser.id,
+          startDate,
+          endDate,
+          totalPrice,
+        },
+      },
     },
   });
 
-  return NextResponse.json(listing);
+  return NextResponse.json(listingAndReservation);
 }
