@@ -17,11 +17,11 @@ const ReservationsPage = async () => {
     );
   }
 
-  const reservation = await getReservations({
+  const reservations = await getReservations({
     authorId: currentUser.id,
   });
 
-  if (reservation.length === 0) {
+  if (reservations.length === 0) {
     return (
       <ClientOnly>
         <EmptyState
