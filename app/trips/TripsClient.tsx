@@ -8,7 +8,7 @@ import { SafeReservation, SafeUser } from "../types";
 import { useCallback, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import ListingCard from "../components/Listings/ListingCard";
+import ListingCard from "../components/listings/ListingCard";
 
 interface TripsClientProps {
   reservations: SafeReservation[];
