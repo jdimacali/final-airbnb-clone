@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
 import EmptyState from "@/app/components/EmptyState";
@@ -5,7 +7,6 @@ import EmptyState from "@/app/components/EmptyState";
 import getListings, { IListingsParams } from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
-import Head from "next/head";
 
 interface HomeProps {
   searchParams: IListingsParams;
@@ -25,9 +26,6 @@ const Home = async ({ searchParams }: HomeProps) => {
 
   return (
     <ClientOnly>
-      <Head>
-        <title> Airbnb </title>
-      </Head>
       <Container>
         <div
           className="
